@@ -36,10 +36,9 @@ html {
   background-color: #222;
   display: flex;
   flex-flow: column;
-  justify-content: center;
   align-items: center;
   padding: 0px 80px;
-  text-align: left;
+  text-align: center;
 }
 
 .app-content h1 {
