@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Settings page</title>
+
+
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="leaflet.js"></script>
+	<script src="SelectLayers.js"></script>
+
+	<style>
+		#map {
+			position: relative;
+			width: 100%;
+			height: 750px;
+		}
+		.infoII {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+		    background-color: #000;
+				opacity: 0.75;
+		    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+		    border-radius: 5px;
+				top: 250px;
+		}
+		.infoII h6 {
+		    margin: 0 0 5px;
+		    color: #000;
+		}
+		.infoIC {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+				background-color: #000;
+				opacity: 0.75;
+		    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+		    border-radius: 5px;
+				top: 250px;
+		}
+		.infoIC h6 {
+		    margin: 0 0 5px;
+		    color: #000;
+		}
+		.infoIS {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+				background-color: #000;
+				opacity: 0.75;
+		    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+		    border-radius: 5px;
+				top: 250px;
+		}
+		.infoIS h6 {
+		    margin: 0 0 5px;
+		    color: #000;
+		}
+		.infoID {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+				background-color: #000;
+				opacity: 0.75;
+		    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+		    border-radius: 5px;
+				top: 250px;
+		}
+		.infoID h6 {
+		    margin: 0 0 5px;
+		    color: #000;
+		}
+    .infoIA {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+				background-color: #000;
+				opacity: 0.75;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        border-radius: 5px;
+				top: 250px;
+    }
+    .infoIA h6 {
+        margin: 0 0 5px;
+        color: #000;
+    }
+		.legendII {
+        line-height: 18px;
+        color: #000;
+    }
+    .legendII i {
+       	width: 18px;
+      	height: 18px;
+      	float: left;
+      	margin-right: 8px;
+      	opacity: 0.7;
+    }
+    .legendIC {
+        line-height: 18px;
+        color: #000;
+    }
+
+    .legendIC i {
+       	width: 18px;
+      	height: 18px;
+      	float: left;
+      	margin-right: 8px;
+      	opacity: 0.7;
+    }
+	</style>
+
+</head>
+<body>
+	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+	<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+	<div class="app-body">
+
+		<!-- Code for the sidebar -->
+	  <div class="sidebar">
+	    <input id="menu" type="checkbox"></input>
+	    <label for="menu">
+	      <ion-icon id="lock-open" name="lock-open-outline"></ion-icon>
+	      <ion-icon id="lock-closed" name="lock-closed-outline"></ion-icon>
+	    </label>
+	    <ul>
+	      <li class="home">
+					<a href="../index.html">
+						<button>
+							<ion-icon name="home-outline"></ion-icon>
+							<span>Home</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="inc">
+					<a href="../morocco/text.html">
+						<button>
+							<ion-icon name="map-outline"></ion-icon>
+							<span>Morocco</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="goals">
+					<a href="../north_africa/text.html">
+						<button>
+							<ion-icon name="earth-outline"></ion-icon>
+							<span>North Africa</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="../morocco_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>Morocco in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="../na_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>NA in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="../barchart/text.html">
+						<button>
+							<ion-icon name="bar-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="../piechart/text.html">
+						<button>
+							<ion-icon name="pie-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+
+	    <ul>
+				<li class="home">
+					<a href="../contact_us/text.html">
+						<button>
+							<ion-icon name="person-circle-outline"></ion-icon>
+							<span>Contact Us</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+	  </div>
+		<!-- End of code for the sidebar -->
+
+		<!-- Page content -->
+		<!-- For a map add code here -->
+		<!-- Look at index.html for help -->
+
+		<div class="app-content">
+			<div id='map'></div>
+			<script src="Climat_NA.geojson" type="text/javascript"></script>
+			<script src="Centroide_NA.geojson" type="text/javascript"></script>
+			<script type="text/javascript">
+				var map = L.map('map').setView([30.25, 9.69], 5);
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution : 'Mahboub'}).addTo(map);
+
+				// couleur selon indice d'inondation (II)
+				function getColorII(d) {
+					return d > 4.00 ? '#99000d' :
+								 d > 3.00 ? '#ef3b2c' :
+								 d > 2.00 ? '#fc9272' : '#fee0d2';
+				}
+				function MonstyleII(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: 'black',
+						dashArray: '3',
+						fillOpacity: 0.9,
+						fillColor: getColorII(feature.properties.Risque_ino)
+					};
+				}
+				function highlightFeatureII(e) {
+						var layerII = e.target;
+						layerII.setStyle({
+							weight: 3,
+							color: '#000',
+							dashArray: '',
+							fillOpacity: 1
+						});
+						if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+							layerII.bringToFront();
+						}
+						infoII.update(layerII.feature.properties);
+				}
+
+				// couleur selon indice de incendie (IC)
+				function getColorIC(d) {
+					return d > 1.50 ? '#99000d' :
+								 d > 1.00 ? '#ef3b2c' :
+								 d > 0.50 ? '#fc9272' : '#fee0d2';
+				}
+				function MonstyleIC(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: 'black',
+						dashArray: '3',
+						fillOpacity: 0.9,
+						fillColor: getColorIC(feature.properties.Indice_inc)
+					};
+				}
+				function highlightFeatureIC(e) {
+					var layerIC = e.target;
+						layerIC.setStyle({
+							weight: 3,
+							color: '#000',
+							dashArray: '',
+							fillOpacity: 1
+						});
+						if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+							layerIC.bringToFront();
+  					}
+						infoIC.update(layerIC.feature.properties);
+				}
+
+				// superficies des forets endomagees par feux (FF)
+				var sym = L.geoJson(Centroide_NA, {
+						style: MonstyleFF,
+						pointToLayer: function(feature, ll) {
+							return L.circleMarker(ll, {
+								radius: calcRadius(Number(feature.properties.Sup_Incendie))
+							});
+						},
+					});
+				function MonstyleFF(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: 'black',
+						dashArray: '3',
+						fillOpacity: 0.75,
+						fillColor: '#fee391'
+					};
+				}
+				function MonstyleSymbFF(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#99000d',
+						dashArray: '3',
+						fillOpacity: 0.9,
+					};
+				}
+				function calcRadius(val) {
+					var radius = Math.sqrt(val)*(30/Math.sqrt(15719));
+					return radius;
+				}
+				function highlightFeatureFF(e) {
+					var layerFF = e.target;
+					layerFF.setStyle({
+						weight: 3,
+						color: '#000',
+						dashArray: '',
+						fillOpacity: 1
+					});
+					if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+						layerFF.bringToFront();
+					}
+					infoFF.update(layerFF.feature.properties);
+				}
+
+				// superficies desertifies (ID)
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleID,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+							radius: calcRadius(Number(feature.properties.Desertification))
+						});
+					},
+				});
+				function MonstyleID(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#fe9929',
+						dashArray: '3',
+						fillOpacity: 0.2,
+					};
+				}
+				function MonstyleSymbID(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#99000d',
+						dashArray: '3',
+						fillOpacity: 1,
+					};
+				}
+				function calcRadius(val) {
+					var radius = Math.sqrt(val)*(40/Math.sqrt(751000));
+						return radius;
+				}
+				function highlightFeatureID(e) {
+					var layerID = e.target;
+					layerID.setStyle({
+  					weight: 3,
+						color: '#000',
+						dashArray: '',
+						fillOpacity: 0
+					});
+  				if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+						layerID.bringToFront();
+					}
+					infoID.update(layerID.feature.properties);
+				}
+
+				// superficies seches (IS)
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleIS,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+							radius: calcRadius(Number(feature.properties.secheresse))
+						});
+					},
+				});
+				function MonstyleIS(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#fc8d59',
+						dashArray: '3',
+						fillOpacity: 0.2,
+				  };
+			  }
+				function MonstyleSymbIS(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#99000d',
+						dashArray: '3',
+						fillOpacity: 1,
+					};
+				}
+				function calcRadius(val) {
+					var radius = Math.sqrt(val)*(50/Math.sqrt(277235));
+					return radius;
+				}
+				function highlightFeatureIS(e) {
+					var layerIS = e.target;
+					layerIS.setStyle({
+						weight: 3,
+						color: '#000',
+						dashArray: '',
+						fillOpacity: 0
+					});
+					if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+						layerIS.bringToFront();
+					}
+					infoIS.update(layerIS.feature.properties);
+				}
+
+				// superficies arides (IA)
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleIA,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+				  		radius: calcRadius(Number(feature.properties.Aridite))
+						});
+					},
+				});
+				function MonstyleIA(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#74c476',
+						dashArray: '3',
+						fillOpacity: 0.2,
+				};
+				}
+				function MonstyleSymbIA(feature) {
+					return {
+						weight: 2,
+						opacity: 1,
+						color: '#99000d',
+						dashArray: '3',
+						fillOpacity: 1,
+					};
+				}
+				function calcRadius(val) {
+					var radius = Math.sqrt(val)*(40/Math.sqrt(2611388));;
+					return radius;
+				}
+				function highlightFeatureIA(e) {
+					var layerIA = e.target;
+					layerIA.setStyle({
+						weight: 3,
+						color: '#000',
+						dashArray: '',
+						fillOpacity: 0
+ 				  });
+			  	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+  			  	layerIA.bringToFront();
+				  }
+				  infoIA.update(layerIA.feature.properties);
+				}
+
+
+
+
+
+
+				function resetHighlightII(e) {
+  				geojsonII.resetStyle(e.target);
+					infoII.update();
+				}
+				function resetHighlightIC(e) {
+					geojsonIC.resetStyle(e.target);
+					infoIC.update();
+				}
+				function resetHighlightIS(e) {
+					geojsonIS.resetStyle(e.target);
+					infoIS.update();
+  			}
+	  		function resetHighlightID(e) {
+					geojsonID.resetStyle(e.target);
+					infoID.update();
+		  	}
+				function resetHighlightIA(e) {
+					geojsonIA.resetStyle(e.target);
+					infoIA.update();
+				}
+				function resetHighlightFF(e) {
+					geojsonFF.resetStyle(e.target);
+					infoFF.update();
+				}
+
+
+				function zoomToFeatureII(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+				function zoomToFeatureIC(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+				function zoomToFeatureIS(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+				function zoomToFeatureID(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+			  function zoomToFeatureIA(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+				function zoomToFeatureFF(e) {
+					map.fitBounds(e.target.getBounds());
+			  }
+
+				function onEachFeatureII(feature, layerII) {
+					layerII.on({
+						mouseover: highlightFeatureII,
+						mouseout: resetHighlightII,
+						click: zoomToFeatureII
+					});
+				}
+				function onEachFeatureIC(feature,layerIC) {
+				  layerIC.on({
+						mouseover: highlightFeatureIC,
+						mouseout: resetHighlightIC,
+						click: zoomToFeatureIC
+				  });
+			  }
+				function onEachFeatureIS(feature,layerIS) {
+					layerIS.on({
+						mouseover: highlightFeatureIS,
+						mouseout: resetHighlightIS,
+						click: zoomToFeatureIS
+					});
+			  }
+				function onEachFeatureID(feature,layerID) {
+					layerID.on({
+						mouseover: highlightFeatureID,
+						mouseout: resetHighlightID,
+						click: zoomToFeatureID
+					});
+			  }
+			  function onEachFeatureIA(feature,layerIA) {
+					layerIA.on({
+						mouseover: highlightFeatureIA,
+						mouseout: resetHighlightIA,
+						click: zoomToFeatureIA
+					});
+			  }
+				function onEachFeatureFF(feature,layerFF) {
+				  layerFF.on({
+						mouseover: highlightFeatureFF,
+						mouseout: resetHighlightFF,
+						click: zoomToFeatureFF
+					});
+			  }
+
+  			var infoII = L.control();
+	  		var infoIC = L.control();
+		  	var infoIS = L.control();
+  			var infoID = L.control();
+	  		var infoIA = L.control();
+		  	var infoFF = L.control();
+
+			  infoII.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoII'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+			  infoIC.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoIC'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+			  infoIS.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoIS'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+			  infoID.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoID'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+			  infoIA.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoIA'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+			  infoFF.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'infoFF'); // create a div with a class "info"
+					this.update();
+					return this._div;
+			  };
+
+			  // method that we will use to update the control based on feature properties passed
+			  infoII.update = function (props) {
+					this._div.innerHTML = '<h4>Visualisation du risque d inondation aux pays d Afrique du Nord :</h4>' +  (props ?
+					'Pays: <b>' + props.Pays + '</b> <br />Indice du risque d inondation : '+ props.Risque_ino
+				  : 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+
+			  infoIC.update = function (props) {
+					this._div.innerHTML = '<h4>Visualisation du risque d incendie aux pays d Afrique du Nord </h4>' +  (props ?
+					'pays : <b>' + props.Pays + '</b> <br />Indice d incendie : '+ props.Indice_inc + '  ' + '</sup>'
+					: 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+
+			  infoIS.update = function (props) {
+					this._div.innerHTML = '<h4>Visualisation du risque de secheresse aux pays d Afrique du Nord </h4>' +  (props ?
+					'pays : <b>' + props.Pays + '</b> <br />Indice de secheresse : '+ props.Sechresse + '  ' + '</sup>'
+					: 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+			  infoID.update = function (props) {
+					this._div.innerHTML = '<h4>Visualisation du risque de desertification aux pays d Afrique du Nord</h4>' +  (props ?
+					'pays : <b>' + props.Pays + '</b> <br />Superficie des zones desetifiees en hectars : '+ props.Desertification+ '</b> <br />du a l erosion de l eau: ' + layer.feature.properties.Des_E + '</b> <br />du a l erosion du vent: ' + layer.feature.properties.Des_V + '</b> <br />du a d autre type d erosion : ' + layer.feature.properties.Des_A + '  ' + '</sup>'
+					: 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+			  infoIA.update = function (props) {
+				  this._div.innerHTML = '<h4>Visualisation du risque d aridite aux pays d Afrique du Nord</h4>' +  (props ?
+					'pays : <b>' + props.Pays + '</b> <br />Superficie des zones arides en hectars : '+ props.Aridite+ '  ' + '</sup>'
+					: 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+			  infoFF.update = function (props) {
+					this._div.innerHTML = '<h4>Visualisation de des superficies attaquees par les feux de forets aux pays d Afrique du Nord </h4>' +  (props ?
+					'pays : <b>' + props.Pays + '</b> <br />Superficies des forets brulees: '+ props.Sup_Incendie + '  ' + '</sup>'
+					: 'Pour afficher plus de détails mettez le curseur sur un pays.');
+			  };
+
+			  map.on('overlayadd', function (eventLayer) {
+					if (eventLayer.name === 'Risque d\'inondation') {
+						this.removeControl(infoIC);
+						this.removeControl(infoIS);
+						this.removeControl(infoID);
+						this.removeControl(infoFF);
+						this.removeControl(infoIA);
+						infoII.addTo(this);
+					}
+					else if (eventLayer.name === 'Risque d\'incendie'){
+						this.removeControl(infoII);
+						this.removeControl(infoIS);
+						this.removeControl(infoID);
+						this.removeControl(infoFF);
+						this.removeControl(infoIA);
+						infoIC.addTo(this);
+					}
+					else if (eventLayer.name === 'Risque de secheresse'){
+						this.removeControl(infoII);
+						this.removeControl(infoIC);
+						this.removeControl(infoID);
+						this.removeControl(infoFF);
+						this.removeControl(infoIA);
+						infoIS.addTo(this);
+					}
+					else if (eventLayer.name === 'Risque de desertification'){
+						this.removeControl(infoII);
+						this.removeControl(infoIC);
+						this.removeControl(infoIS);
+						this.removeControl(infoFF);
+						this.removeControl(infoIA);
+						infoID.addTo(this);
+					}
+					else if (eventLayer.name === 'Risque d\'aridité'){
+						this.removeControl(infoII);
+						this.removeControl(infoIC);
+						this.removeControl(infoIS);
+						this.removeControl(infoFF);
+						this.removeControl(infoID);
+						infoID.addTo(this);
+					}
+					else  {
+						this.removeControl(infoII);
+						this.removeControl(infoIC);
+						this.removeControl(infoIS);
+						this.removeControl(infoID);
+						this.removeControl(infoIA);
+						infoFF.addTo(this);
+				}});
+
+			  // DECLARATION DES LAYEIS
+				var geojsonII = L.geoJson(Climat_NA, {
+					style: MonstyleII,
+					onEachFeature: onEachFeatureII,
+			  });
+				var geojsonIC = L.geoJson(Climat_NA, {
+					style: MonstyleIC,
+					onEachFeature: onEachFeatureIC,
+			  });
+				var geojsonIS = L.geoJson(Climat_NA, {
+					style: MonstyleIS,
+					onEachFeature: onEachFeatureIS,
+			  });
+				var geojsonID = L.geoJson(Climat_NA, {
+					style: MonstyleID,
+					onEachFeature: onEachFeatureID,
+  			});
+				var geojsonIA = L.geoJson(Climat_NA, {
+	  			style: MonstyleIA,
+					onEachFeature: onEachFeatureIA,
+		  	});
+				var geojsonFF = L.geoJson(Climat_NA, {
+					style: MonstyleFF,
+					onEachFeature: onEachFeatureFF,
+			  });
+
+				// symboles proportionnelles des feux de forets
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleSymbFF,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+					  	radius: calcRadius(Number(feature.properties.Sup_Incendie))
+						});
+					},
+				});
+				var geojsonFF = L.layerGroup([geojsonFF,sym.bringToFront()]);
+				// symboles proportionnelles des superficies seches
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleSymbIS,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+  						radius: calcRadius(Number(feature.properties.Sechresse))
+						});
+					},
+				});
+				var geojsonIS = L.layerGroup([geojsonIS,sym.bringToFront()]);
+				// symboles proportionnelles des superficies desertifiees
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleSymbID,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+  						radius: calcRadius(Number(feature.properties.Desertification))
+						});
+					},
+				});
+				var geojsonID = L.layerGroup([geojsonID,sym.bringToFront()]);
+				// symboles proportionnelles des superficies arides
+				var sym = L.geoJson(Centroide_NA, {
+					style: MonstyleSymbIA,
+					pointToLayer: function(feature, ll) {
+						return L.circleMarker(ll, {
+							radius: calcRadius(Number(feature.properties.Aridite))
+						});
+					},
+				});
+				var geojsonIA = L.layerGroup([geojsonIA,sym.bringToFront()]);
+
+
+  			var graphicScale = L.control.graphicScale({fill:'fill',doubleLine:true}).addTo(map);
+	    	var basemaps = {
+	    			Topographie: L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+	        			layers: 'TOPO-WMS'
+	    			}),
+
+						Territoire: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+								attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+						}),
+
+						Satellite: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+								attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+						})
+
+				};
+			  var overlayMaps = {
+					 "Risque d\'inondation": geojsonII,
+					 "Risque d\'incendie": geojsonIC,
+					 "Risque de desertification" : geojsonID,
+					 "Risque d\'aridité" : geojsonIA,
+					 "Risque de secheresse" : geojsonIS,
+				};
+			  L.control.layers(basemaps, overlayMaps,{collapsed: true}).addTo(map);
+			  basemaps.Esri_WorldGrayCanvas.addTo(map);
+
+			  // Labels
+			  //  II
+			  var legendII = L.control({position: 'bottomright'});
+				legendII.onAdd = function () {
+					var div = L.DomUtil.create('div', 'infoII legendII'),
+	    				grades = [3.350,2.640,1.929];
+					div.innerHTML += '<h6>Legende :</h6>';
+					for (var i = 0; i < (grades.length-1); i++) {
+						div.innerHTML +	'<div style="background-color :' + getColorII(grades[i]) + '"></i> ' +
+						grades[i] + (grades[i+1] ? ' _ ' + grades[i + 1] + ' <br>' :'+');
+					}
+					return div;
+			  };
+			  //  IC
+			  var legendIC = L.control({position: 'bottomright'});
+				legendIC.onAdd = function (map) {
+					var div = L.DomUtil.create('div', 'infoIC legendIC'),
+  		    		grades = [0,1,2,3,4,5];
+					div.innerHTML += '<h6>Legende :</h6>';
+					for (var i = 0; i < (grades.length-1); i++) {
+						div.innerHTML += '<div style="background-color :' + getColorIC(grades[i+1]) + '"></i> ' +
+						grades[i] + (grades[i + 1] ? ' _ ' + grades[i + 1] + ' <br>' :' ');
+					}
+					return div;
+  			};
+
+				// ifs on labels
+			  map.on('overlayadd', function (eventLayer) {
+					if (eventLayer.name === 'Risque d inondation aux pays du Nord d Afrique') {
+						this.removeControl(legendIC);
+						legendII.addTo(this);
+					}
+					else {
+					  this.removeControl(legendII);
+						legendIC.addTo(this);
+			  }});
+			</script>
+		</div>
+		<!-- End of page content -->
+  </div>
+</div>
+
+<script  src="./script.js"></script>
+
+</body>
+</html>

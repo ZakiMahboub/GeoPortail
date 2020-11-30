@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Home page</title>
+
+	<link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+</head>
+<body>
+	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+	<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+	<div class="app-body">
+
+		<!-- Code for the sidebar -->
+	  <div class="sidebar">
+	    <input id="menu" type="checkbox"></input>
+	    <label for="menu">
+	      <ion-icon id="lock-open" name="lock-open-outline"></ion-icon>
+	      <ion-icon id="lock-closed" name="lock-closed-outline"></ion-icon>
+	    </label>
+	    <ul>
+	      <li class="home">
+					<a href="index.html">
+						<button>
+							<ion-icon name="home-outline"></ion-icon>
+							<span>Home</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="inc">
+					<a href="./morocco/text.html">
+						<button>
+							<ion-icon name="map-outline"></ion-icon>
+							<span>Morocco</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="goals">
+					<a href="./north_africa/text.html">
+						<button>
+							<ion-icon name="earth-outline"></ion-icon>
+							<span>North Africa</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="./morocco_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>Morocco in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="./na_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>NA in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="./barchart/text.html">
+						<button>
+							<ion-icon name="bar-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="./piechart/text.html">
+						<button>
+							<ion-icon name="pie-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+
+	    <ul>
+				<li class="home">
+					<a href="./contact_us/text.html">
+						<button>
+							<ion-icon name="person-circle-outline"></ion-icon>
+							<span>Contact Us</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+	  </div>
+		<!-- End of code for the sidebar -->
+
+		<!-- Page content -->
+		<!-- For a map add code here -->
+		<!-- Look at index.html for help -->
+
+		<div class="app-content">
+			<h1>Home<br></h1>
+			<ion-icon name="arrow-back-outline"></ion-icon>
+			<p>
+					Ce Géoportail cartographie des statistiques sur le climat et les risques climatiques au Maroc ainsi qu'au Nord d'Afrique.
+					Vous pouvez utiliser la barre de navigation à gauche pour accéder aux différents onglet du site.
+			 </p>
+
+			<h1>Qui sommes-nous ?</h1>
+			<p id="us">
+				Zakaria MAHBOUB & Hasnaa AIT IKHLEF
+				<br> Etudiants Géomètres Topographes
+				<img id="zakaria" src="./images/zakaria.jpg"/>
+				<img id="hasna" src="./images/hasna.jpg"/>
+			</p>
+	    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+			<script  src="./script.js"></script>
+
+		</div>
+		<!-- End of page content -->
+  </div>
+</div>
+
+<script  src="./script.js"></script>
+
+</body>
+</html>

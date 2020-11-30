@@ -1,0 +1,226 @@
+:root {
+    --primary-green: #87e4b0;
+    --primary-red: #ef7979;
+    --primary-blue: #539ded;
+    --primary-purple: #8790e4;
+    --home-hover-color: #999;
+    --sidebar-hover-color: #303030;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    color: #e5e5e5;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+html {
+    background-color: #222;
+}
+
+.app-body {
+  display: flex;
+  flex-flow: row;
+  height: 100vh;
+}
+
+.app-content {
+  position: relative;
+  flex: 1;
+  background-color: #222;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0px;
+  text-align: center;
+}
+
+.app-content h1 {
+  font-size: 300%;
+}
+
+.app-content p {
+  font-size: 120%;
+}
+
+.app-content span {
+  font-size: 10px;
+  color: #999;
+}
+
+.app-content ion-icon {
+  position: absolute;
+  top: 25px;
+  left: 20px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/********** SIDEBAR **********/
+
+.sidebar {
+    background-color: #333;
+    display: flex;
+    flex-flow: column;
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.sidebar .settings button {
+    padding-bottom: 25px;
+}
+
+.sidebar ul:last-of-type {
+    margin-top: auto;
+}
+
+.sidebar input[type=checkbox] {
+    display: none;
+}
+
+.sidebar label {
+    width: 50px;
+}
+
+.sidebar label:hover {
+    cursor: pointer;
+}
+
+.sidebar label ion-icon {
+    opacity: 0.1;
+    padding: 18px;
+    font-size: 170%;
+    transition: opacity 0.2s;
+    transition-delay: 1000ms;
+}
+
+.sidebar label ion-icon:active {
+    transform: scale(1, 0.9);
+    margin-top: 2px;
+    margin-bottom: -2px;
+}
+
+.sidebar #lock-closed {
+    display: none;
+    margin-bottom: 3px;
+    margin-top: 1px;
+}
+
+.sidebar #lock-closed:active {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.sidebar input[type=checkbox]:checked ~ label #lock-closed {
+    display: block;
+    opacity: 1;
+}
+
+.sidebar input[type=checkbox]:checked ~ label #lock-open {
+    display: none;
+}
+
+.sidebar:hover label ion-icon {
+    opacity: 1;
+}
+
+.sidebar:hover ul li,
+.sidebar input[type=checkbox]:checked ~ ul li {
+    width: 200px;
+    transition: width 0.2s;
+    transition-delay: 250ms;
+}
+
+.sidebar ul li {
+    width: 65px;
+    transition: width 0.2s;
+}
+
+.sidebar ul li button span {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.1s, transform 0.2s;
+}
+
+.sidebar:hover span,
+.sidebar input[type=checkbox]:checked ~ ul li span {
+    display: inline-block;
+    padding-right: 10px;
+    position: absolute;
+    transition: opacity 0.1s, transform 0.2s;
+    transition-delay: 500ms;
+    opacity: 1;
+    color: #e5e5e5;
+}
+
+.sidebar ul li button {
+    height: 100%;
+    width: 100%;
+    font-size: 125%;
+    color: #e5e5e5;
+    text-align: left;
+    padding: 15px 15px;
+    border-left: 5px solid transparent;
+}
+
+.sidebar ul li:hover button,
+.sidebar .active {
+    background-color: var(--sidebar-hover-color);
+    cursor: pointer;
+}
+
+.sidebar .home:hover button,
+.sidebar .home-active {
+    border-color: #000;
+    color: #999;
+}
+
+.sidebar .inc:hover button,
+.sidebar .inc-active {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+.sidebar .exp:hover button,
+.sidebar .exp-active {
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+}
+
+.sidebar .goals:hover button,
+.sidebar .goals-active {
+    border-color: var(--primary-purple);
+    color: var(--primary-purple);
+}
+
+.sidebar .report:hover button,
+.sidebar .report-active {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.sidebar ul li ion-icon {
+    vertical-align: -5px;
+    font-size: 120%;
+    margin-right: 10px;
+}
