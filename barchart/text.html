@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Income page</title>
+
+
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<link rel="stylesheet" href="style.css" />
+	<script src="leaflet.js"></script>
+	<script src="SelectLayers.js"></script>
+
+	<style>
+			svg {
+				background-color: #aaa
+			}
+			.bar1 {
+					fill: #003f5c;
+			}
+			.bar2 {
+					fill: #7a5195;
+			}
+			.bar3 {
+					fill: #ef5675;
+			}
+			.bar4 {
+					fill: #ffa600;
+			}
+			.highlight {
+					fill: orange;
+			}
+	</style>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+	<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+	<div class="app-body">
+
+		<!-- Code for the sidebar -->
+	  <div class="sidebar">
+	    <input id="menu" type="checkbox"></input>
+	    <label for="menu">
+	      <ion-icon id="lock-open" name="lock-open-outline"></ion-icon>
+	      <ion-icon id="lock-closed" name="lock-closed-outline"></ion-icon>
+	    </label>
+	    <ul>
+	      <li class="home">
+					<a href="../index.html">
+						<button>
+							<ion-icon name="home-outline"></ion-icon>
+							<span>Home</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="inc">
+					<a href="../morocco/text.html">
+						<button>
+							<ion-icon name="map-outline"></ion-icon>
+							<span>Morocco</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="goals">
+					<a href="../north_africa/text.html">
+						<button>
+							<ion-icon name="earth-outline"></ion-icon>
+							<span>North Africa</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="../morocco_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>Morocco in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="exp">
+					<a href="../na_in_3d/text.html">
+						<button>
+							<ion-icon name="cube-outline"></ion-icon>
+							<span>NA in 3D</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="../barchart/text.html">
+						<button>
+							<ion-icon name="bar-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+
+				<li class="report">
+					<a href="../piechart/text.html">
+						<button>
+							<ion-icon name="pie-chart-outline"></ion-icon>
+							<span>Forest Cover</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+
+	    <ul>
+				<li class="home">
+					<a href="../contact_us/text.html">
+						<button>
+							<ion-icon name="person-circle-outline"></ion-icon>
+							<span>Contact Us</span>
+	        	</button>
+					</a>
+				</li>
+	    </ul>
+	  </div>
+		<!-- End of code for the sidebar -->
+
+		<!-- Page content -->
+		<!-- For a map add code here -->
+		<!-- Look at index.html for help -->
+
+		<div class="app-content">
+			<h1>Diagramme à bandes</h1>
+			<h2>Représentant la croissance du covert végétale dans les pays du Nord de l'Afrique</h2>
+			<ion-icon name="arrow-back-outline"></ion-icon>
+			<svg width="600" height="500"></svg>
+		  <script>
+
+
+		      // variables to change
+		      var svg = d3.select("svg"),
+		          margin = 200,
+		          width = svg.attr("width") - margin,
+		          height = svg.attr("height") - margin,
+		          Ymin = 0,
+		          Ymax = 50,
+		          chartTitle = "Titre du graphe",
+		          Xlabel = "Période",
+		          Ylabel = "Surface (x1000 ha/an)",
+		          legend_x = width - 0
+
+		          // Handmade legend
+		      svg.append("circle").attr("cx",legend_x).attr("cy",100).attr("r", 6).style("fill", "#003f5c")
+		      svg.append("text").attr("x", legend_x + 20).attr("y", 100).text("Maroc").style("font-size", "15px").attr("alignment-baseline","middle")
+		      svg.append("circle").attr("cx",legend_x).attr("cy",120).attr("r", 6).style("fill", "#7a5195")
+		      svg.append("text").attr("x", legend_x + 20).attr("y", 120).text("Algerie").style("font-size", "15px").attr("alignment-baseline","middle")
+		      svg.append("circle").attr("cx",legend_x).attr("cy",140).attr("r", 6).style("fill", "#ef5675")
+		      svg.append("text").attr("x", legend_x + 20).attr("y", 140).text("Tunisie").style("font-size", "15px").attr("alignment-baseline","middle")
+		      svg.append("circle").attr("cx",legend_x).attr("cy",160).attr("r", 6).style("fill", "#ffa600")
+		      svg.append("text").attr("x", legend_x + 20).attr("y", 160).text("Egypt").style("font-size", "15px").attr("alignment-baseline","middle")
+		      svg.append("circle").attr("cx",legend_x).attr("cy",180).attr("r", 6).style("fill", "#888")
+		      svg.append("text").attr("x", legend_x + 20).attr("y", 180).text("Libye").style("font-size", "15px").attr("alignment-baseline","middle")
+
+		      // Chart Title
+					/*
+		      svg.append("text")
+		         .attr("transform", "translate(100,0)")
+		         .attr("x", width/2)
+		         .attr("y", 50)
+		         .attr("text-anchor", "middle")
+		         .attr("font-size", "24px")
+		         .text(chartTitle)
+					*/
+
+		      var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+		          yScale = d3.scaleLinear().range([height, 0]);
+
+		      var g = svg.append("g")
+		                 .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+		      d3.csv("barchart_data.csv", function(error, data) {
+		          if (error) {
+		              throw error;
+		          }
+
+		          xScale.domain(data.map(function(d) { return d.year; }));
+		          yScale.domain([Ymin, Ymax]);
+
+		          // X label
+		          g.append("g")
+		           .attr("transform", "translate(0," + height + ")")
+		           .call(d3.axisBottom(xScale).tickFormat(function(d){
+		             return d == 2000 ? "1990 - 2000" :
+		                    d == 2010 ? "2000 - 2010" :
+		                    d == 2015 ? "2010 - 2015" : "2015 - 2020"
+		           }))
+		           .append("text")
+		           .attr("y", height - 270)
+		           .attr("x", width - 6)
+		           .attr("text-anchor", "end")
+		           .attr("stroke", "black")
+		           .text(Xlabel);
+
+		          // Y label
+		          g.append("g")
+		           .call(d3.axisLeft(yScale).tickFormat(function(d){
+		               return d;
+		           })
+		           .ticks(10))
+		           .append("text")
+		           .attr("transform", "rotate(-90)")
+		           .attr("y", 20)
+		           .attr("dy", "-5.1em")
+		           .attr("text-anchor", "end")
+		           .attr("stroke", "black")
+		           .text(Ylabel);
+
+		          // edit bars (1)
+		          g.selectAll(".bar")
+		           .data(data)
+		           .enter().append("rect")
+		           .attr("class", "bar1")
+		           .attr("x", function(d) { return xScale(d.year); })
+		           .attr("y", function(d) { return yScale(d.val_ma); })
+		           .attr("width", function (d) { return xScale.bandwidth() * 0.25; })
+		           .transition()
+		           .ease(d3.easeLinear)
+		           .duration(400)
+		           .delay(function (d, i) {
+		               return i * 50;
+		           })
+		           .attr("height", function(d) { return height - yScale(d.val_ma); });
+
+		           // edit bars (2)
+		           g.selectAll(".bar")
+		            .data(data)
+		            .enter().append("rect")
+		            .attr("class", "bar2")
+		            .attr("x", function(d) { return xScale(d.year) + (xScale.bandwidth() * 0.25); })
+		            .attr("y", function(d) { return yScale(d.val_al); })
+		            .attr("width", function (d) { return xScale.bandwidth() * 0.25; })
+		            .transition()
+		            .ease(d3.easeLinear)
+		            .duration(400)
+		            .delay(function (d, i) {
+		                return i * 50;
+		            })
+		            .attr("height", function(d) { return height - yScale(d.val_al); });
+
+		            // edit bars (3)
+		            g.selectAll(".bar")
+		             .data(data)
+		             .enter().append("rect")
+		             .attr("class", "bar3")
+		             .attr("x", function(d) { return xScale(d.year) + (xScale.bandwidth() * 0.5); })
+		             .attr("y", function(d) { return yScale(d.val_tu); })
+		             .attr("width", function (d) { return xScale.bandwidth() * 0.25; })
+		             .transition()
+		             .ease(d3.easeLinear)
+		             .duration(400)
+		             .delay(function (d, i) {
+		                 return i * 50;
+		             })
+		             .attr("height", function(d) { return height - yScale(d.val_tu); });
+
+		             // edit bars (4)
+		             g.selectAll(".bar")
+		              .data(data)
+		              .enter().append("rect")
+		              .attr("class", "bar4")
+		              .attr("x", function(d) { return xScale(d.year) + (xScale.bandwidth() * 0.75); })
+		              .attr("y", function(d) { return yScale(d.val_eg); })
+		              .attr("width", function (d) { return xScale.bandwidth() * 0.25; })
+		              .transition()
+		              .ease(d3.easeLinear)
+		              .duration(400)
+		              .delay(function (d, i) {
+		                  return i * 50;
+		              })
+		              .attr("height", function(d) { return height - yScale(d.val_eg); });
+		      });
+		  </script>
+		</div>
+		<!-- End of page content -->
+
+  </div>
+
+<script  src="./script.js"></script>
+
+</body>
+</html>
